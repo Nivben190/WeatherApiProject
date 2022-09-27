@@ -1,14 +1,14 @@
 .App {
   text-align: center;
   height: 100vh;
+  width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("https://img.freepik.com/free-vector/blue-sky-with-shiny-clouds-background_1017-23279.jpg?w=360");
 }
 .container {
   padding-top:5%;
-  margin-left: 15%;
-  margin-right: auto;
+
 }
 .card-title
 {
@@ -62,11 +62,22 @@
 
 .card
 {
+  margin-left: auto;
+  margin-right: auto;
   background-color: lightblue;
-  width: 350px;
+  width: 70%;
   height: 80vh;
+  
+    
+  }
+  @media screen and (max-width: 768px) {
+    .card{
+      width: 80%;
+    }
+  }
+   
+  
 
-}
 
 .App-logo {
   height: 40vmin;
