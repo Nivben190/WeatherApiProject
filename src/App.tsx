@@ -43,7 +43,7 @@ function App() {
                   <div className='weatherDiv'>
                   {weather && ( <div className="alert alert-success mt-3">
                    <h3 className='cityH3'>{weather.name}</h3>  <br/> <h3 className='tempH3'>{weather.main.temp}°C</h3> </div> )}
-                 <img src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`} alt="weather icon"/>
+                 <img src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`} alt="weather icon"/>
                   </div>
                   <button type="submit" className="btn  btn-block">
                     Get Weather
