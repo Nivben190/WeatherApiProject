@@ -22,3 +22,8 @@
   * to start the app:
   * run  npm i on main folder 
   * run npm start
+
+
+  <img width="1440" alt="צילום מסך 2022-09-27 ב-5 31 05 אח׳" src="https://user-images.githubusercontent.com/96342824/192556927-358a3dc8-29be-4216-a87e-7c4e26e071ca.png">
+
+<img width="1440" alt="צילום מסך 2022-09-27 ב-5 30 59 אח׳" src="https://user-images.githubusercontent.com/96342824/192556834-befa4f07-adb3-431d-8d76-9b4072d50c99.png">
