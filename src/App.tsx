@@ -26,7 +26,6 @@ function App() {
        setWeather(data.data);
     }
  
-    //use effect to get weather
   
 
   return (
