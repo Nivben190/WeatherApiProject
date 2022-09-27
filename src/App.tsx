@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import { IWeather } from './models/IWeather';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import { getWeatherByName } from './services/dbServices';
 
 function App() {
   //get current weather from openweatherapi
@@ -13,20 +13,13 @@ function App() {
 
   //use Weather interface to init state
   const [weather, setWeather] = useState<IWeather>();
-  
-  const apiKey= "3b2ab293517107856f588a1e77e122ee"
-  const uri=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    // functin that get current weather from openweatherapi
-    const getWeather=async(e: React.FormEvent<HTMLFormElement>)=>
-     {
-       e.preventDefault();
-      setLoading(true);
-      const data = await axios.get(uri);    
-       setWeather(data.data);
-    }
- 
-  
+
+    //use effect 
+    useEffect(() => {
+     getWeatherByName("London",setWeather,setLoading,setError);
+
+    }, []);
 
   return (
     <div className="App">
@@ -37,7 +30,7 @@ function App() {
               <div className="card-body">
                 <h1 className="card-title">Weather App</h1>
              
-                <form onSubmit={getWeather}>
+                <form onSubmit={(e)=>getWeatherByName(city,setWeather,setLoading,setError,e)}>
                   <div className="form-group">
                     <input
                       type="text"
@@ -47,19 +40,19 @@ function App() {
                       onChange={(e) => setCity(e.target.value)}
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <div className='weatherDiv'>
+                  {weather && ( <div className="alert alert-success mt-3">
+                   <h3 className='cityH3'>{weather.name}</h3>  <br/> <h3 className='tempH3'>{weather.main.temp}°C</h3> </div> )}
+                 <img src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`} alt="weather icon"/>
+                  </div>
+                  <button type="submit" className="btn  btn-block">
                     Get Weather
                   </button>
                 </form>
                 
-                {weather && ( <div className="alert alert-success mt-3">City: {city} <br/> Temperature: {weather.main.temp}°C</div> )}
-
+   
                 {loading && <p>Loading...</p>}
-                {error && <p>City not found</p>}
-              
-
                 {error && ( <div className="alert alert-danger mt-3">City not found</div> )}
-                {!error && !loading && ( <div className="alert alert-info mt-3">Loading</div> )}
               </div>
             </div>
           </div>

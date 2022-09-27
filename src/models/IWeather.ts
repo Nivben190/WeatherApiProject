@@ -20,5 +20,6 @@ export interface IWeather {
         temp_min: number;
         temp_max: number;
     };
+    name: string;
     visibility: number;
 }
